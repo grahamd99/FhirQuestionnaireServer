@@ -24,18 +24,28 @@ const questionnaire = {
     item: [
         {
             linkId: "1",
-            text: "Do you have any allergies?",
+            text: "Do you have a pacemaker or any other implanted medical device ?",
             type: "boolean"
         },
         {
             linkId: "2",
-            text: "What medications are you currently taking?",
+            text: "Do you need additional support to attend screening ?",
             type: "string"
         },
         {
             linkId: "3",
-            text: "Do you have any chronic illnesses?",
-            type: "string"
+            text: "Are you pregnant or breastfeeding ?",
+            type: "boolean"
+        },
+        {
+            linkId: "4",
+            text: "Are you under the care of a breast consultant ?",
+            type: "boolean"
+        },
+        {
+            linkId: "5",
+            text: "Have you had a mammogram in the last 6 months ?",
+            type: "boolean"
         }
     ]
 };
