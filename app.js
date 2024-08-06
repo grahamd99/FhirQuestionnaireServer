@@ -2,10 +2,13 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const fs = require('fs');
 const path = require('path');
 
 const app = express();
 const port = 3000;
+
+
 
 // Serve Static Assets
 app.use(express.static("public"));
@@ -15,45 +18,30 @@ app.use('/static', express.static('public'))
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
 // FHIR Questionnaire resource instance
-const questionnaire = {
-    resourceType: "Questionnaire",
-    id: "health-questionnaire",
-    status: "active",
-    subjectType: ["Patient"],
-    item: [
-        {
-            linkId: "1",
-            text: "Do you have a pacemaker or any other implanted medical device ?",
-            type: "boolean"
-        },
-        {
-            linkId: "2",
-            text: "Do you need additional support to attend screening ?",
-            type: "string"
-        },
-        {
-            linkId: "3",
-            text: "Are you pregnant or breastfeeding ?",
-            type: "boolean"
-        },
-        {
-            linkId: "4",
-            text: "Are you under the care of a breast consultant ?",
-            type: "boolean"
-        },
-        {
-            linkId: "5",
-            text: "Have you had a mammogram in the last 6 months ?",
-            type: "boolean"
-        }
-    ]
-};
+// Create a path to the file in the subdirectory
+const filePath = path.join(__dirname, './public/examples', 'prescreenQuestionnaire1.json');
+
+// Read the file asynchronously
+fs.readFile(filePath, 'utf8', (err, data) => {
+  if (err) {
+    console.error('Error reading the file:', err);
+    return;
+  }
+  // Assign the content to a const variable
+  //const questionnaire = data;
+  global.questionnaire = data;
+
+  // Log the file content to verify
+  //console.log(questionnaire);
+});
 
 // Endpoint to render the questionnaire
 app.get('/questionnaire', (req, res) => {
     res.render('questionnaire', { questionnaire: questionnaire });
 });
+
 
 // Endpoint to submit a questionnaire response
 app.post('/questionnaire-response', (req, res) => {
