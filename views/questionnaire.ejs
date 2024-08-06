@@ -1,0 +1,27 @@
+<!-- views/questionnaire.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Questionnaire</title>
+    <script src="node_modules/nhsuk-frontend/dist/nhsuk.min.js" defer></script>
+</head>
+</head>
+<body document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');>
+    <h1>Health Questionnaire</h1>
+    <form action="/questionnaire-response" method="POST">
+        <% questionnaire.item.forEach(function(item) { %>
+            <div>
+                <label><%= item.text %></label>
+                <% if (item.type === 'boolean') { %>
+                    <input type="checkbox" name="<%= item.linkId %>">
+                <% } else if (item.type === 'string') { %>
+                    <input type="text" name="<%= item.linkId %>">
+                <% } %>
+            </div>
+        <% }); %>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
