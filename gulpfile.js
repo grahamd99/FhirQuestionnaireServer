@@ -6,8 +6,8 @@ const plumber = require('gulp-plumber');
 
 const paths = {
     scss: {
-        src: './src/scss/*.scss',
-        dest: './css'
+        src: './src/scss/styles.scss',
+        dest: './public/css'
     }
 };
 

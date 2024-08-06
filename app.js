@@ -7,6 +7,11 @@ const path = require('path');
 const app = express();
 const port = 3000;
 
+// Serve Static Assets
+app.use(express.static("public"));
+// Virtual Path Prefix '/static'
+app.use('/static', express.static('public'))
+
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 
