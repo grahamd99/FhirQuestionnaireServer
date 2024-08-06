@@ -6,10 +6,19 @@ const plumber = require('gulp-plumber');
 
 const paths = {
     scss: {
+        src: './src/scss/nhsuk.scss',
+        dest: './public/css'
+    }
+};
+
+/*
+const paths = {
+    scss: {
         src: './src/scss/styles.scss',
         dest: './public/css'
     }
 };
+*/
 
 function styles() {
     return gulp.src(paths.scss.src)
