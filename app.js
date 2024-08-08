@@ -8,8 +8,6 @@ const path = require('path');
 const app = express();
 const port = 3000;
 
-
-
 // Serve Static Assets
 app.use(express.static("public"));
 // Virtual Path Prefix '/static'
@@ -31,7 +29,7 @@ fs.readFile(filePath, 'utf8', (err, data) => {
   }
   // Assign the content to a const variable
   //const questionnaire = data;
-  global.questionnaire = data;
+  global.questionnaire = JSON.parse(data);
 
   // Log the file content to verify
   //console.log(questionnaire);
