@@ -4,6 +4,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
+var createError = require('http-errors');
+
 
 const app = express();
 const port = 3000;
@@ -16,10 +18,16 @@ app.use('/static', express.static('public'))
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 
+var authenticated = false;
+
+var homeRouter               = require('./routes/home');
+var indexRouter              = require('./routes/index');
+var questionnaireRouter      = require('./routes/questionnaire');
 
 // FHIR Questionnaire resource instance
 // Create a path to the file in the subdirectory
 const filePath = path.join(__dirname, './public/examples', 'prescreenQuestionnaire1.json');
+//const filePath = path.join(__dirname, './public/examples', 'SDOHCC.json');
 
 // Read the file asynchronously
 fs.readFile(filePath, 'utf8', (err, data) => {
@@ -33,6 +41,26 @@ fs.readFile(filePath, 'utf8', (err, data) => {
 
   // Log the file content to verify
   //console.log(questionnaire);
+});
+
+
+app.use('/', homeRouter);
+app.use('/questionnaire', questionnaireRouter);
+
+// catch 404 and forward to error handler
+app.use(function (req, res, next) {
+  next(createError(404));
+});
+
+// error handler
+app.use(function (err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
 });
 
 // Endpoint to render the questionnaire
@@ -69,3 +97,5 @@ app.post('/questionnaire-response', (req, res) => {
 app.listen(port, () => {
     console.log(`FHIR Questionnaire app listening at http://localhost:${port}`);
 });
+
+//module.exports = app;

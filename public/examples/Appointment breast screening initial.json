@@ -1,0 +1,120 @@
+{
+    "resourceType": "Appointment",
+    "id": "UKCore-Appointment-BreastScreeningInitial-Example",
+    "extension":  [
+        {
+            "url": "https://fhir.hl7.org.uk/StructureDefinition/Extension-UKCore-BookingOrganization",
+            "valueReference": {
+                "reference": "Organization/UKCore-Organization-WhiteRoseMedicalCentre-Example",
+                "type": "Organization"
+            }
+        },
+        {
+            "url": "https://fhir.hl7.org.uk/StructureDefinition/Extension-UKCore-DeliveryChannel",
+            "valueCode": "In-person"
+        }
+    ],
+    "identifier":  [
+        {
+            "system": "https://tools.ietf.org/html/rfc4122",
+            "value": "e7c54d06-c5b5-4ecb-91c3-5c1e68d3b923"
+        }
+    ],
+    "status": "booked",
+    "serviceCategory":  [
+        {
+            "coding":  [
+                {
+                    "system": "http://terminology.hl7.org/CodeSystem/service-category",
+                    "code": "35",
+                    "display": "Hospital"
+                }
+            ]
+        }
+    ],
+    "serviceType":  [
+        {
+            "coding":  [
+                {
+                    "system": "http://terminology.hl7.org/CodeSystem/service-type",
+                    "code": "272",
+                    "display": "Breast Screen"
+                }
+            ]
+        }
+    ],
+    "specialty":  [
+        {
+            "coding":  [
+                {
+                    "system": "http://snomed.info/sct",
+                    "code": "310126000",
+                    "display": "Breast screening service (qualifier value)"
+                }
+            ]
+        }
+    ],
+    "appointmentType": {
+        "coding":  [
+            {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0276",
+                "code": "ROUTINE",
+                "display": "Routine appointment - default if not valued"
+            }
+        ]
+    },
+    "reasonReference":  [
+        {
+            "reference": "Condition/UKCore-Condition-HipReplacement-Example",
+            "display": "Pain in both hips"
+        }
+    ],
+    "priority": 1,
+    "description": "Appointment for NHS Breast Screening Programme initial screening",
+    "start": "2022-03-11T10:46:00+00:00",
+    "end": "2022-03-11T13:20:00+00:00",
+    "created": "2022-02-14",
+    "comment": "No additional comments",
+    "patientInstruction": "Please do not eat anything for 1 hour prior to the appointment.",
+    "basedOn":  [
+        {
+            "reference": "ServiceRequest/UKCore-ServiceRequest-BreastSCreeningMammographyRequest"
+        }
+    ],
+    "participant":  [
+        {
+            "actor": {
+                "reference": "Patient/UKCore-Patient-JulieJones-Example",
+                "display": "Julie Jones"
+            },
+            "required": "required",
+            "status": "accepted"
+        },
+        {
+            "type":  [
+                {
+                    "coding":  [
+                        {
+                            "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                            "code": "ATND"
+                        }
+                    ]
+                }
+            ],
+            "actor": {
+                "reference": "Practitioner/UKCore-Practitioner-ConsultantSandraGose-Example",
+                "display": "Dr Sandra Gose"
+            },
+            "required": "required",
+            "status": "accepted"
+        },
+        {
+            "actor": {
+                "reference": "Location/UKCore-Location-HospitalSJUH-Example",
+                "display": "Orthopaedic Trauma Department, St James' University Hospital, Leeds"
+            },
+            "required": "required",
+            "status": "accepted"
+        }
+    ]
+}

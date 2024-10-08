@@ -61,5 +61,17 @@
             "text": "Have you had a mammogram in the last 6 months ?",
             "type": "boolean"
         }
+        ,
+        {
+            "linkId": "6",
+            "text": "Have you had breast cancer ?",
+            "type": "boolean"
+        }
+        ,
+        {
+            "linkId": "7",
+            "text": "Is english your first language ?",
+            "type": "boolean"
+        }
     ]
 }
