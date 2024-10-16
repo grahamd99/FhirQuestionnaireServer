@@ -5,9 +5,9 @@ router.get('/', function (req, res, next) {
 
     if ( 1==1 ) {
 
-        console.log("Inside /questionnaire!");
+        console.log("Inside /appointment!");
 
-                res.render("questionnaire", {
+                res.render("appointment", {
                 })
 
             .catch(function (error) {

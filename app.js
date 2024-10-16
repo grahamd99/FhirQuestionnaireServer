@@ -23,6 +23,7 @@ var authenticated = false;
 var homeRouter               = require('./routes/home');
 var indexRouter              = require('./routes/index');
 var questionnaireRouter      = require('./routes/questionnaire');
+var appointmentRouter        = require('./routes/appointment');
 
 // FHIR Questionnaire resource instance
 // Create a path to the file in the subdirectory
@@ -46,6 +47,7 @@ fs.readFile(filePath, 'utf8', (err, data) => {
 
 app.use('/', homeRouter);
 app.use('/questionnaire', questionnaireRouter);
+app.use('/appointment', appointmentRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -67,7 +69,6 @@ app.use(function (err, req, res, next) {
 app.get('/questionnaire', (req, res) => {
     res.render('questionnaire', { questionnaire: questionnaire });
 });
-
 
 // Endpoint to submit a questionnaire response
 app.post('/questionnaire-response', (req, res) => {
@@ -92,6 +93,12 @@ app.post('/questionnaire-response', (req, res) => {
     };
 
     res.json(questionnaireResponse);
+});
+
+// Endpoint to render the appointment
+app.get('/appointment', (req, res) => {
+//    res.render('appointment', { appointment: appointment });
+    res.render('appointment');
 });
 
 app.listen(port, () => {
