@@ -3,6 +3,10 @@ var router = express.Router();
 
 router.get('/', function (req, res, next) {
 
+    console.log("Inside /appointment!");
+    res.render("appointment", { foo: 'bar'})
+
+/*
     if ( 1==1 ) {
 
     console.log("Inside /appointment!");
@@ -22,6 +26,8 @@ router.get('/', function (req, res, next) {
     } else {
         //res.redirect('/login');
     }
+*/
+
 });
 
 module.exports = router;
