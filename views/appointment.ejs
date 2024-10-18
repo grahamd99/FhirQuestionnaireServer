@@ -1,15 +1,66 @@
 <%- include('partials/header'); -%>
 
-        <div class="nhsuk-width-container">
-            <main class="nhsuk-main-wrapper" id="maincontent">
-                <div class="nhsuk-grid-row">
-        	        <div class="nhsuk-grid-column-two-thirds">
-				        <h1>Appointment page</h1>
-				        <P>Click on the links above
+	<div class="nhsuk-width-container">
+    	<main class="nhsuk-main-wrapper" id="maincontent">
+        	<div class="nhsuk-grid-row">
+				<div class="nhsuk-grid-column-two-thirds">
+				<h1>Appointment page</h1>
+
+          <h2>Participant demographics details</h2\>
+
+                    <div>
+                        <div class="nhsuk-form-group">
+                          <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+                          <div class="nhsuk-hint" id="more-detail-hint">
+                            Mrs Julie Jones, DOB 13-Jun-1973, Postcode LA19 5YN
+                          </div>
+                          <div class="nhsuk-hint" id="more-detail-hint">
+                            NHS Number 9435797881
+                          </div>
+                        </div>
+                    </div>
+
+
+          <h2>Appointment details</h2>
+
+					<div>
+                        <div class="nhsuk-form-group">
+                          <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+                          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                              Participant
+                          </legend>
+                          <div class="nhsuk-hint" id="more-detail-hint">
+                            <%= appointment.participant[0].actor.display %>
+                          </div>
+                          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                              Appointment Status
+                          </legend>
+                          <div class="nhsuk-hint" id="more-detail-hint">
+                            <%= appointment.status %>
+                          </div>
+                          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                              Appointment description
+                          </legend>
+                          <div class="nhsuk-hint" id="more-detail-hint">
+                            <%= appointment.description %>
+                          </div>
+                          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                              Appointment start time
+                          </legend>
+                          <div class="nhsuk-hint" id="more-detail-hint">
+                            <%= new Date(appointment.start).toLocaleString() %>
+                          </div>
+                          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                              Appointment end time
+                          </legend>
+                          <div class="nhsuk-hint" id="more-detail-hint">
+                            <%= new Date(appointment.end).toLocaleString() %>
+						  </div>
+						</div>
 					</div>
 				</div>
-			</main>
-		</div>
-
+			</div>
+		</main>
+	</div>
 
 <%- include('partials/footer'); -%>

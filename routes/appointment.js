@@ -4,30 +4,18 @@ var router = express.Router();
 router.get('/', function (req, res, next) {
 
     console.log("Inside /appointment!");
-    res.render("appointment", { foo: 'bar'})
 
-/*
-    if ( 1==1 ) {
+    try {
 
-    console.log("Inside /appointment!");
+        const appointment = global.appointment; 
 
-    res.render("appointment", { foo: 'bar'})
-
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-                res.sendStatus(500);
-                return;
-            })
-            .then(function () {
-                // always executed
-                return;
-            });
-    } else {
-        //res.redirect('/login');
+        // Render the EJS template and pass the appointment data
+        res.render('appointment', { appointment });
+    } catch (error) {
+        console.error("Error fetching FHIR appointment:", error);
+        res.status(500).send("Internal Server Error");
     }
-*/
 
-});
+})
 
 module.exports = router;

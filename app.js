@@ -23,23 +23,35 @@ var questionnaireRouter      = require('./routes/questionnaire');
 var postQuestionnaireRouter  = require('./routes/postquestionnaire');
 var appointmentRouter        = require('./routes/appointment');
 
-// FHIR Questionnaire resource instance
+// FHIR resource instances
 // Create a path to the file in the subdirectory
-const filePath = path.join(__dirname, './public/examples', 'prescreenQuestionnaire1.json');
-//const filePath = path.join(__dirname, './public/examples', 'SDOHCC.json');
+const questionnaireFilePath = path.join(__dirname, './public/examples', 'prescreenQuestionnaire1.json');
+const appointmentFilePath = path.join(__dirname, './public/examples', 'Appointment breast screening initial.json');
 
-// Read the file asynchronously
-fs.readFile(filePath, 'utf8', (err, data) => {
+// Read the Questionnaire file asynchronously
+fs.readFile(questionnaireFilePath, 'utf8', (err, data) => {
   if (err) {
     console.error('Error reading the file:', err);
     return;
   }
   // Assign the content to a const variable
-  //const questionnaire = data;
   global.questionnaire = JSON.parse(data);
 
   // Log the file content to verify
   //console.log(questionnaire);
+});
+
+// Read the Appointment file asynchronously
+fs.readFile(appointmentFilePath, 'utf8', (err, data) => {
+  if (err) {
+    console.error('Error reading the file:', err);
+    return;
+  }
+  // Assign the content to a const variable
+  global.appointment = JSON.parse(data);
+
+  // Log the file content to verify
+  //console.log(appointment);
 });
 
 
