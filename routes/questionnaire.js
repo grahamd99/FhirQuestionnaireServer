@@ -13,12 +13,15 @@ router.get('/', function (req, res, next) {
             .catch(function (error) {
                 // handle error
                 console.log(error);
+                res.sendStatus(500);
+                return;
             })
             .then(function () {
                 // always executed
+                                return;
             });
     } else {
-        //res.redirect('/login');
+        res.redirect('/');
     }
 });
 

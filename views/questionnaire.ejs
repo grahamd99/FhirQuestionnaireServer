@@ -9,7 +9,7 @@
 
           <h1>Pre-screening questionnaire</h1>
 
-          <form action="/questionnaire-response" method="POST">
+          <form action="/postquestionnaire" method="POST">
               <% questionnaire.item.forEach(function(item) { %>
                   <div>
                       <% if (item.type === 'boolean') { %>

@@ -1,11 +1,8 @@
-// app.js
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
 var createError = require('http-errors');
-
 
 const app = express();
 const port = 3000;
@@ -23,6 +20,7 @@ var authenticated = false;
 var homeRouter               = require('./routes/home');
 var indexRouter              = require('./routes/index');
 var questionnaireRouter      = require('./routes/questionnaire');
+var postQuestionnaireRouter  = require('./routes/postquestionnaire');
 var appointmentRouter        = require('./routes/appointment');
 
 // FHIR Questionnaire resource instance
@@ -47,6 +45,7 @@ fs.readFile(filePath, 'utf8', (err, data) => {
 
 app.use('/', homeRouter);
 app.use('/questionnaire', questionnaireRouter);
+app.use('/postquestionnaire', postQuestionnaireRouter);
 app.use('/appointment', appointmentRouter);
 
 // catch 404 and forward to error handler
@@ -63,42 +62,6 @@ app.use(function (err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
-});
-
-// Endpoint to render the questionnaire
-app.get('/questionnaire', (req, res) => {
-    res.render('questionnaire', { questionnaire: questionnaire });
-});
-
-// Endpoint to submit a questionnaire response
-app.post('/questionnaire-response', (req, res) => {
-    const items = Object.keys(req.body).map(key => {
-        return {
-            linkId: key,
-            answer: [{
-                valueBoolean: req.body[key] === 'on' ? true : undefined,
-                valueString: req.body[key] !== 'on' ? req.body[key] : undefined
-            }]
-        };
-    });
-
-    const questionnaireResponse = {
-        resourceType: "QuestionnaireResponse",
-        questionnaire: `Questionnaire/${questionnaire.id}`,
-        status: "completed",
-        subject: {
-            reference: "Patient/example"
-        },
-        item: items
-    };
-
-    res.json(questionnaireResponse);
-});
-
-// Endpoint to render the appointment
-app.get('/appointment', (req, res) => {
-//    res.render('appointment', { appointment: appointment });
-    res.render('appointment');
 });
 
 app.listen(port, () => {

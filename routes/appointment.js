@@ -5,17 +5,19 @@ router.get('/', function (req, res, next) {
 
     if ( 1==1 ) {
 
-        console.log("Inside /appointment!");
+    console.log("Inside /appointment!");
 
-                res.render("appointment", {
-                })
+    res.render("appointment", { foo: 'bar'})
 
             .catch(function (error) {
                 // handle error
                 console.log(error);
+                res.sendStatus(500);
+                return;
             })
             .then(function () {
                 // always executed
+                return;
             });
     } else {
         //res.redirect('/login');
