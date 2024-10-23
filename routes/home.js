@@ -1,15 +1,13 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get("/", function (req, res, next) {
+  //console.log("req.isAuthenticated()=" + req.isAuthenticated() )
 
-//console.log("req.isAuthenticated()=" + req.isAuthenticated() )
+  res.render("home");
 
-
-   res.render("home");
-
-/*
+  /*
  if ( req.isAuthenticated() == true ) {
     var user= req.user;
     var username= req.user.username;
@@ -24,8 +22,6 @@ router.get('/', function(req, res, next) {
     authenticated: process.env.AUTHENTICATE == "false" || req.isAuthenticated()
   });
 */
-
 });
-
 
 module.exports = router;
