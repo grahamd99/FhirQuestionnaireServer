@@ -68,6 +68,27 @@
       "linkId": "7",
       "text": "Is english your first language ?",
       "type": "boolean"
+    },
+    {
+      "linkId": "8",
+      "text": "What is the image read finding of your screening mammography ?",
+      "type": "choice",
+      "answerOption": [
+        {
+          "valueCoding": {
+            "system": "http://snomed.info/sct",
+            "code": "168749009",
+            "display": "Mammography normal (finding)"
+          }
+        },
+        {
+          "valueCoding": {
+            "system": "http://snomed.info/sct",
+            "code": "168750009",
+            "display": "Mammography abnormal (finding)"
+          }
+        }
+      ]
     }
   ]
 }

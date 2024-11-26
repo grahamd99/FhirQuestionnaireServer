@@ -46,6 +46,29 @@
                           </div>
                           <textarea class="nhsuk-textarea" id="more-detail" name="<%= item.linkId %>" rows="5" aria-describedby="more-detail-hint"></textarea>
                         </div>
+                      <% } else if (item.type === 'choice') { %>
+                        <div class="nhsuk-form-group">
+                          <label class="nhsuk-label" for="select-1">
+                            <%= item.text %>
+                          </label>
+                          <select class="nhsuk-select">
+<% questionnaire.item.forEach(function(item) { %>
+  <div class="questionnaire-item">
+    <label for="<%= item.linkId %>"><%= item.text %></label>
+    <select id="<%= item.linkId %>" name="<%= item.linkId %>">
+      <% if (item.answerOption) { %>
+        <% item.answerOption.forEach(function(option) { %>
+          <option value="<%= option.valueCoding.code %>">
+            <%= option.valueCoding.display || option.valueCoding.code %>
+          </option>
+        <% }); %>
+      <% } %>
+    </select>
+  </div>
+<% }); %>
+
+                          </select>
+                        </div>
                       <% } %>
                   </div>
               <% }); %>
