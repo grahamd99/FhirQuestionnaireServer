@@ -1,6 +1,8 @@
 # FhirQuestionnaireServer
 
-A Node.js Express app to present a FHIR Questionnaire and return completed FHIR QuestionnaireResponse
+A Node.js Express app to:
+a) Present a FHIR Questionnaire rendered as an NHS.uk styled HTML web form and return completed FHIR QuestionnaireResponse
+b) Render a FHIR Appointment as an NHS.uk styled HTML web page
 
 NHS.uk front end library https://nhsuk.github.io/nhsuk-frontend/
 
@@ -17,7 +19,7 @@ npm install
 3. run it
 
 ```
-node ./appjs
+node ./app.js
 ```
 
 or
