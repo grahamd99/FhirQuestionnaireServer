@@ -71,7 +71,7 @@
     },
     {
       "linkId": "8",
-      "text": "What is the image read finding of your screening mammography ?",
+      "text": "What is the image read finding of the initial screening mammography ?",
       "type": "choice",
       "answerOption": [
         {
@@ -86,6 +86,13 @@
             "system": "http://snomed.info/sct",
             "code": "168750009",
             "display": "Mammography abnormal (finding)"
+          }
+        },
+        {
+          "valueCoding": {
+            "system": "http://snomed.info/sct",
+            "code": "134301000119104",
+            "display": "Inconclusive mammography finding (finding)"
           }
         }
       ]

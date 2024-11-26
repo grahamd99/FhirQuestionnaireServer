@@ -1,11 +1,10 @@
 <%- include('partials/header'); -%>
 
-
-          <div class="nhsuk-width-container">
-            <main class="nhsuk-main-wrapper" id="maincontent">
+<div class="nhsuk-width-container">
+  <main class="nhsuk-main-wrapper" id="maincontent">
         
-              <div class="nhsuk-grid-row">
-                <div class="nhsuk-grid-column-two-thirds">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-two-thirds">
 
           <h1>Pre-screening questionnaire</h1>
 
@@ -47,39 +46,33 @@
                           <textarea class="nhsuk-textarea" id="more-detail" name="<%= item.linkId %>" rows="5" aria-describedby="more-detail-hint"></textarea>
                         </div>
                       <% } else if (item.type === 'choice') { %>
-                        <div class="nhsuk-form-group">
-                          <label class="nhsuk-label" for="select-1">
-                            <%= item.text %>
-                          </label>
-                          <select class="nhsuk-select">
-<% questionnaire.item.forEach(function(item) { %>
-  <div class="questionnaire-item">
-    <label for="<%= item.linkId %>"><%= item.text %></label>
-    <select id="<%= item.linkId %>" name="<%= item.linkId %>">
-      <% if (item.answerOption) { %>
-        <% item.answerOption.forEach(function(option) { %>
-          <option value="<%= option.valueCoding.code %>">
-            <%= option.valueCoding.display || option.valueCoding.code %>
-          </option>
-        <% }); %>
-      <% } %>
-    </select>
-  </div>
-<% }); %>
-
-                          </select>
-                        </div>
+                        <% questionnaire.item.forEach(function(item) { %>
+                          <% if (item.answerOption) { %>
+                            <div class="nhsuk-form-group">
+                              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                                <%= item.text %>
+                              </legend>
+                              <select class="nhsuk-select" id="<%= item.linkId %>"name="<%= item.linkId %>">
+                              <% item.answerOption.forEach(function(option) { %>
+                                <option value="<%= option.valueCoding.code %>">
+                                  <%= option.valueCoding.display || option.valueCoding.code %>
+                                </option>
+                              <% }); %>
+                            </select>
+                          </div>
+                        <% } %>
+                      <% }); %>
+ 
                       <% } %>
                   </div>
-              <% }); %>
+                <% }); %>
               <button class="nhsuk-button" data-module="nhsuk-button"  type="submit">Submit</button>
           </form>
 
-</div>
-</div>
+      </div>
+    </div>
 
-</main>
+  </main>
 </div>
-
 
 <%- include('partials/footer'); -%>
