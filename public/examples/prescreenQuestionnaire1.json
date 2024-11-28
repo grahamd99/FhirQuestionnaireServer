@@ -39,38 +39,68 @@
       "text": "Do you have a pacemaker or any other implanted medical device ?",
       "type": "boolean"
     },
-    {
+     {
       "linkId": "2",
+      "text": "If yes, please specify which type(s) of medical device implant you have.",
+      "type": "choice",
+      "required": false,
+      "item": [
+        {
+          "linkId": "2.1",
+          "text": "Pacemaker",
+          "type": "boolean"
+        },
+        {
+          "linkId": "2.2",
+          "text": "Insulin Pump",
+          "type": "boolean"
+        },
+        {
+          "linkId": "2.3",
+          "text": "Other",
+          "type": "string"
+        }
+      ],
+      "enableWhen": [
+        {
+          "question": "1",
+          "operator": "equals",
+          "answerBoolean": true
+        }
+      ]
+    },
+    {
+      "linkId": "3",
       "text": "Do you need additional support to attend screening ?",
       "type": "string"
     },
     {
-      "linkId": "3",
+      "linkId": "4",
       "text": "Are you pregnant or breastfeeding ?",
       "type": "boolean"
     },
     {
-      "linkId": "4",
+      "linkId": "5",
       "text": "Are you under the care of a breast consultant ?",
       "type": "boolean"
     },
     {
-      "linkId": "5",
+      "linkId": "6",
       "text": "Have you had a mammogram in the last 6 months ?",
       "type": "boolean"
     },
     {
-      "linkId": "6",
+      "linkId": "7",
       "text": "Have you had breast cancer ?",
       "type": "boolean"
     },
     {
-      "linkId": "7",
+      "linkId": "8",
       "text": "Is english your first language ?",
       "type": "boolean"
     },
     {
-      "linkId": "8",
+      "linkId": "9",
       "text": "What is the image read finding of the initial screening mammography ?",
       "type": "choice",
       "answerOption": [
