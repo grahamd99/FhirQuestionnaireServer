@@ -35,9 +35,14 @@ const appointmentFilePath = path.join(
   "./public/examples",
   "Appointment breast screening initial.json"
 );
+const questionnaireLungFilePath = path.join(
+  __dirname,
+  "./public/examples",
+  "prescreenLungQuestionnaire1.json"
+);
 
 // Read the Questionnaire file asynchronously
-fs.readFile(questionnaireFilePath, "utf8", (err, data) => {
+fs.readFile(questionnaireLungFilePath, "utf8", (err, data) => {
   if (err) {
     console.error("Error reading the file:", err);
     return;

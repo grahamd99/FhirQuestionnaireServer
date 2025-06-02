@@ -39,11 +39,8 @@
                         <div class="nhsuk-form-group">
                           <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
                             <%= item.text %>
-                        </legend>
-                          <div class="nhsuk-hint" id="more-detail-hint">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-                          </div>
-                          <textarea class="nhsuk-textarea" id="more-detail" name="<%= item.linkId %>" rows="5" aria-describedby="more-detail-hint"></textarea>
+                          </legend>
+                          <input class="nhsuk-input nhsuk-input--width-10" id="<%= item.linkId %>" name="<%= item.linkId %>" type="text" aria-describedby="input-width-10-hint">
                         </div>
                       <% } else if (item.type === 'choice') { %>
                         <% questionnaire.item.forEach(function(item) { %>
