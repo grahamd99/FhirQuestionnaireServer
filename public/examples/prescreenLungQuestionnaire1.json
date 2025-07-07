@@ -76,8 +76,33 @@
     },
     {
       "linkId": "3",
+      "text": "Have you ever been diagnosed with Pneumonia, Emphysema, Bronchitis, TB or COPD?",
+      "type": "boolean"
+    },
+    {
+      "linkId": "4",
+      "text": "Have you ever been diagnosed with a malignancy or cancer?",
+      "type": "boolean"
+    },
+    {
+      "linkId": "5",
       "text": "Exposure to asbestos ?",
       "type": "boolean"
+    },
+    {
+      "linkId": "6",
+      "text": "Have any of your 1st degree relatives, including parents, had a diagnosis of lung cancer?",
+      "type": "boolean"
+    },
+    {
+      "linkId": "7",
+      "text": "If yes, were they less than 60 years old at diagnosis?",
+      "type": "boolean"
+    },
+    {
+      "linkId": "8",
+      "text": "How many years have you smoked for (including cigs, pipe and cigar)?",
+      "type": "string"
     }
   ]
 }
